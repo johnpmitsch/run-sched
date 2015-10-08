@@ -17,39 +17,35 @@
   </div>
   <div class="field">
     <%= f.label :monday %><br>
-    <%= f.text_field :monday %>
+    <%= f.select :monday, @training_options, :selected => "rest"  %>
   </div>
   <div class="field">
     <%= f.label :tuesday %><br>
-    <%= f.text_field :tuesday %>
+    <%= f.select :tuesday, @training_options, :selected => "short run" %>
   </div>
   <div class="field">
     <%= f.label :wednesday %><br>
-    <%= f.text_field :wednesday %>
+    <%= f.select :wednesday, @training_options, :selected => "medium run" %>
   </div>
   <div class="field">
     <%= f.label :thursday %><br>
-    <%= f.text_field :thursday %>
+    <%= f.select :thursday, @training_options, :selected => "cross train" %>
   </div>
   <div class="field">
     <%= f.label :friday %><br>
-    <%= f.text_field :friday %>
+    <%= f.select :friday, @training_options, :selected => "short run"  %>
   </div>
   <div class="field">
     <%= f.label :saturday %><br>
-    <%= f.text_field :saturday %>
+    <%= f.select :saturday, @training_options, :selected =>  "rest" %>
   </div>
   <div class="field">
     <%= f.label :sunday %><br>
-    <%= f.text_field :sunday %>
+    <%= f.select :sunday, @training_options, :selected => "long run" %>
   </div>
   <div class="field">
     <%= f.label :race_type %><br>
-    <%= f.text_field :race_type %>
-  </div>
-  <div class="field">
-    <%= f.label :user_id %><br>
-    <%= f.number_field :user_id %>
+    <%= f.select :race_type, @race_types %>
   </div>
   <div class="actions">
     <%= f.submit %>

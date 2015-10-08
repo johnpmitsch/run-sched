@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 20151007021359) do
 
   create_table "schedules", force: :cascade do |t|
     t.date     "race_day"
+    t.string   "name"
     t.string   "monday"
     t.string   "tuesday"
     t.string   "wednesday"

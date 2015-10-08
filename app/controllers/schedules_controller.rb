@@ -4,7 +4,7 @@ class SchedulesController < ApplicationController
   # GET /schedules
   # GET /schedules.json
   def index
-    @schedules = Schedule.all
+    @schedules = current_user.schedules 
   end
 
   # GET /schedules/1
@@ -14,7 +14,9 @@ class SchedulesController < ApplicationController
 
   # GET /schedules/new
   def new
-    @schedule = Schedule.new
+    @training_options = TRAINING_OPTIONS
+    @race_types = RACE_TYPES
+    @schedule = current_user.schedules.new
   end
 
   # GET /schedules/1/edit
@@ -24,7 +26,7 @@ class SchedulesController < ApplicationController
   # POST /schedules
   # POST /schedules.json
   def create
-    @schedule = Schedule.new(schedule_params)
+    @schedule = current_user.schedules.new(schedule_params)
 
     respond_to do |format|
       if @schedule.save

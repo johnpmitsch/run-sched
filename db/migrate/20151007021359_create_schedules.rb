@@ -2,6 +2,7 @@ class CreateSchedules < ActiveRecord::Migration
   def change
     create_table :schedules do |t|
       t.date :race_day
+      t.string :name
       t.string :monday
       t.string :tuesday
       t.string :wednesday
