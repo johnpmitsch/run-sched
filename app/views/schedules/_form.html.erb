@@ -10,7 +10,11 @@
       </ul>
     </div>
   <% end %>
-
+  
+  <div class="field">
+    <%= f.label :schedule_name %><br>
+    <%= f.text_field :name %>
+  </div>
   <div class="field">
     <%= f.label :race_day %><br>
     <%= f.date_select :race_day %>
