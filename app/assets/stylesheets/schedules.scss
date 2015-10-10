@@ -1,3 +1,14 @@
 // Place all the styles related to the Schedules controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.schedule-table td {
+  min-width: 84px;
+}
+
+.activity {
+  text-align: center;
+}
+
+.completed {
+  color: green;
+}

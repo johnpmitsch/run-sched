@@ -1,26 +1,28 @@
 <h1><%= @schedule.name %></h1>
 
-<table class="table-bordered table-striped">
+<table class="table-bordered table-striped schedule-table">
   <tr>
-    <td>Week</td>
-    <td>Monday</td>
-    <td>Tuesday</td>
-    <td>Wednesday</td>
-    <td>Thursday</td>
-    <td>Friday</td>
-    <td>Saturday</td>
-    <td>Sunday</td>
+    <td><b>Week</b></td>
+    <td><b>Monday</b></td>
+    <td><b>Tuesday</b></td>
+    <td><b>Wednesday</b></td>
+    <td><b>Thursday</b></td>
+    <td><b>Friday</b></td>
+    <td><b>Saturday</b></td>
+    <td><b>Sunday</b></td>
   </tr>
-  <% @schedule.weeks.each do |week| %>
-  <tr>
-    <td><%= week.number %></td>
-    <% week.days.each do |day| %>
-    <td>
-      <p><%= day.date %></p>
-      <p><%= day.activity %></p>
-    </td>
+  <% @schedule.weeks.order(:number).each do |week| %>
+    <% if week.days.any? %>
+    <tr>
+      <td><b><%= week.number %></b></td>
+      <% week.days.order(:date).each do |day| %>
+      <td>
+        <p><em><%= day.date.strftime('%m/%d') %></em></p>
+        <p class="activity"><%= day.activity %></p>
+      </td>
+      <% end %>
+    </tr>
     <% end %>
-  </tr>
   <% end %>
 </table>
     
