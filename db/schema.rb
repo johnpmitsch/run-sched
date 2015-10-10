@@ -11,10 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151007021359) do
+ActiveRecord::Schema.define(version: 20151009022221) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "days", force: :cascade do |t|
+    t.string   "activity"
+    t.date     "date"
+    t.boolean  "completed"
+    t.integer  "week_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "days", ["week_id"], name: "index_days_on_week_id", using: :btree
 
   create_table "schedules", force: :cascade do |t|
     t.date     "race_day"
@@ -52,4 +63,15 @@ ActiveRecord::Schema.define(version: 20151007021359) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  create_table "weeks", force: :cascade do |t|
+    t.integer  "schedule_id"
+    t.integer  "number"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "weeks", ["schedule_id"], name: "index_weeks_on_schedule_id", using: :btree
+
+  add_foreign_key "days", "weeks"
+  add_foreign_key "weeks", "schedules"
 end
