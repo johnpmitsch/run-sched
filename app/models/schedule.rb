@@ -10,42 +10,48 @@ class Schedule < ActiveRecord::Base
       :short_run => [3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 5, 5, 4, 3, 3],
       :medium_run => [5, 5, 5, 6, 6, 6, 7, 7, 7, 8, 8, 8, 5, 8, 5, 4, 3, 2, 2],
       :long_run => [5, 6, 7, 8, 10, 11, 12, 14, 16, 16, 17, 18, 19, 20, 22, 12, 8, 8],
-      :rest => duplicate_string_array('rest', training_weeks),
-      :cross_train => duplicate_string_array('cross train', training_weeks),
+      :rest => duplicate_string_array('rest', training_weeks + 1),
+      :cross_train => duplicate_string_array('cross train', training_weeks + 1),
       :weeks => training_weeks
     }
   end
 
   def update_weeks
-    (1..self.training_info[:weeks]).each do |week_num|
-      week = Week.first_or_create({
+    total_weeks = self.training_info[:weeks] + 1
+    (1..total_weeks).each do |week_num|
+      week = Week.where({
         :schedule_id => self.id,
         :number => week_num
-      })
+      }).first_or_initialize
       week.save!
     end
   end
 
   def update_days
-    training_day = self.start_date
+    training_day = self.start_date(self.training_info[:weeks])
 
     self.weeks.each_with_index do |week, index|
-      if training_day == self.race_date
-        activity = "Race Day"
-      elsif training_day == self.race_date - 1 || self.race_date - 1
-        activity = "rest"
-      else
-        activity = self.training_info[training_day.weekday.to_sym][index]
-      end
+      (1..7).each do |_x|
+        if training_day == self.race_day
+          activity = "Race Day"
+        elsif training_day == self.race_day - 1 || training_day == self.race_day - 2
+          activity = "rest"
+        else
+          activity_type = self.send(training_day.strftime('%A').downcase.to_sym).sub(" ","_").to_sym
+          activity = self.training_info[activity_type][index]
+        end
 
-      Day.first_or_create({
-        :week_id => week.id,
-        :activity => activity,
-        :date => training_day,
-        :completed => false
-      })
-      training_day += 1
-      break if training_day == self.race_date
+        day = Day.where({
+          :week_id => week.id,
+          :activity => activity,
+          :date => training_day,
+          :completed => false
+        }).first_or_initialize
+        day.save!
+
+        break if training_day == self.race_day
+        training_day += 1
+      end
     end
   end
   
