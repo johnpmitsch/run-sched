@@ -1,6 +1,6 @@
 class Schedule < ActiveRecord::Base
   belongs_to :user
-  has_many :weeks
+  has_many :weeks, dependent: :destroy
 
   attr_accessor :login
   

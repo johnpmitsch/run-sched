@@ -28,9 +28,11 @@ class SchedulesController < ApplicationController
   # POST /schedules.json
   def create
     @schedule = current_user.schedules.new(schedule_params)
-
+    
     respond_to do |format|
       if @schedule.save
+        @schedule.update_weeks
+        @schedule.update_days
         format.html { redirect_to @schedule, notice: 'Schedule was successfully created.' }
         format.json { render :show, status: :created, location: @schedule }
       else
@@ -59,7 +61,7 @@ class SchedulesController < ApplicationController
   def destroy
     @schedule.destroy
     respond_to do |format|
-      format.html { redirect_to schedules_url, notice: 'Schedule was successfully destroyed.' }
+      format.html { redirect_to schedules_url, notice: 'Schedule was successfully deleted.' }
       format.json { head :no_content }
     end
   end
@@ -73,6 +75,6 @@ class SchedulesController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def schedule_params
-    params.require(:schedule).permit(:race_day, :monday, :tuesday, :wednesday, :thursday, :friday, :saturday, :sunday, :race_type, :user_id)
+    params.require(:schedule).permit(:race_day, :monday, :tuesday, :wednesday, :thursday, :friday, :saturday, :sunday, :race_type, :user_id, :name)
   end
 end

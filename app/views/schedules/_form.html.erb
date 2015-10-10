@@ -12,7 +12,7 @@
   <% end %>
   
   <div class="field">
-    <%= f.label :schedule_name %><br>
+    <%= f.label :name, "Schedule Name" %><br>
     <%= f.text_field :name %>
   </div>
   <div class="field">
@@ -20,6 +20,10 @@
     <%= f.date_select :race_day %>
   </div>
   <div class="field">
+    <%= f.label :race_type %><br>
+    <%= f.select :race_type, @race_types %>
+  </div>
+ <div class="field">
     <%= f.label :monday %><br>
     <%= f.select :monday, @training_options, :selected => "rest"  %>
   </div>
@@ -46,10 +50,6 @@
   <div class="field">
     <%= f.label :sunday %><br>
     <%= f.select :sunday, @training_options, :selected => "long run" %>
-  </div>
-  <div class="field">
-    <%= f.label :race_type %><br>
-    <%= f.select :race_type, @race_types %>
   </div>
   <div class="actions">
     <%= f.submit %>
