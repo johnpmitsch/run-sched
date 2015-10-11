@@ -13,18 +13,14 @@
   </tr>
   <% @schedule.weeks.order(:number).each do |week| %>
     <% if week.days.any? %>
-    <tr>
-      <td><b><%= week.number %></b></td>
-      <% week.days.order(:date).each do |day| %>
-      <td>
-        <p><em><%= day.date.strftime('%m/%d') %></em></p>
-        <p class="activity"><%= day.activity %></p>
-      </td>
-      <% end %>
-    </tr>
+      <tr>
+        <td><b><p class="week_number"><%= week.number %><p></b></td>
+        <% week.days.order(:date).each do |day| %>
+          <%= render day %>
+        <% end %>
+      </tr>
     <% end %>
   <% end %>
 </table>
     
-<%= link_to 'Edit', edit_schedule_path(@schedule) %> |
-<%= link_to 'Back', schedules_path %>
+<%= link_to 'Edit', edit_schedule_path(@schedule) %> 

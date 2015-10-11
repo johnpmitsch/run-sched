@@ -1,0 +1,10 @@
+<%= div_for day do %>
+  <td>
+    <p><em><%= day.date.strftime('%m/%d') %></em></p>
+    <% if day.completed? %>
+      <p class="activity"><%= link_to day.activity, mark_completed_path(day), remote: true, class: 'completed' %></p>
+    <% else %>
+      <p class="activity"><%= link_to day.activity, mark_completed_path(day), remote: true %></p>
+    <% end %>
+  </td>
+<% end %>

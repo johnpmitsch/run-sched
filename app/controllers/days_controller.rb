@@ -1,5 +1,7 @@
 class DaysController < ApplicationController
-  def toggle_completed
-    self.update_attributes!({:completed => !Day.first.completed})
+  def mark_completed
+    @day = Day.find(params[:id])
+    @day.toggle_completed
+    render :nothing => true 
   end
 end
