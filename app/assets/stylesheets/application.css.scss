@@ -28,6 +28,11 @@
 
 .completed {
   color: green;
+  text-decoration: line-through !important;
+}
+
+.completed_background {
+  background-color: rgba(0, 255, 0, 0.2);
 }
 
 .delete_schedule a {

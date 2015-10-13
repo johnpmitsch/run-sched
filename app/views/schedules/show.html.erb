@@ -1,5 +1,8 @@
 <h1><%= @schedule.name %></h1>
 
+<div class="alert alert-info">Here is your customized schedule, click on an activity to mark it as completed and keep track
+of your progress!</div>
+
 <table class="table-bordered table-striped schedule-table">
   <tr>
     <td><b>Week</b></td>
@@ -16,7 +19,7 @@
       <tr>
         <td><b><p class="week_number"><%= week.number %><p></b></td>
         <% week.days.order(:date).each do |day| %>
-          <%= render day %>
+            <%= render day, locals: { day: @day }%>
         <% end %>
       </tr>
     <% end %>

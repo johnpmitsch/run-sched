@@ -2,6 +2,8 @@ class DaysController < ApplicationController
   def mark_completed
     @day = Day.find(params[:id])
     @day.toggle_completed
-    render :nothing => true 
+    respond_to do |format|
+      format.js
+    end
   end
 end

@@ -1,2 +1,1 @@
-alert('hi');
-$('div#<%= dom_id(@day) %>').replaceWith('<%= j render("form") %>');
+$('#day_<%= @day.id %>').html("<%= escape_javascript(render partial: 'day', locals: { day: @day } ) %>"); 
