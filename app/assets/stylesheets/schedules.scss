@@ -3,9 +3,39 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .schedule-table td {
   min-width: 84px;
+  min-height: 1px;
+  padding: 0px;
 }
 
 .week_number {
   text-align: center;
   font-size: 20px;
+}
+
+.schedule_day {
+  display: inline-block;
+  height: 100%; 
+  width: 100%;
+}
+
+.activity {
+  text-align: center;
+  font-size: 15px;
+}
+
+.activity a, {
+  text-decoration: none;
+}
+
+.activity a:hover, {
+  text-decoration: none;
+}
+
+.completed_background {
+  background-color: rgba(0, 255, 0, 0.2);
+  height: 100%;
+}
+
+.delete_schedule a {
+  color: #fff;
 }

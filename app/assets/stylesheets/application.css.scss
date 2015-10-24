@@ -13,30 +13,7 @@
  *= require_tree .
  *= require_self
  */
-.activity {
-  text-align: center;
-  font-size: 15px;
+.logo {
+  height: 40px;
+  margin: 5px auto;
 }
-
-.activity a, {
-  text-decoration: none;
-}
-
-.activity a:hover, {
-  text-decoration: none;
-}
-
-.completed {
-  color: green;
-  text-decoration: line-through !important;
-}
-
-.completed_background {
-  background-color: rgba(0, 255, 0, 0.2);
-}
-
-.delete_schedule a {
-  color: #fff;
-}
-
-

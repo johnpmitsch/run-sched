@@ -1,10 +1,23 @@
-<td>
-  <%= div_for day do %>
-    <p><em><%= day.date.strftime('%m/%d') %></em></p>
-    <% if day.completed? %>
-      <p class="activity"><b><%= link_to day.activity, mark_completed_path(day), remote: true, class: 'completed' %></b></p>
-    <% else %>
-      <p class="activity"><b><%= link_to day.activity, mark_completed_path(day), remote: true %></b></p>
+<% if day.completed? %>
+  <td class="table_cell">
+  <%= link_to mark_completed_path(day), remote: true, class: 'completed' do %>
+    <%= div_for(day, class: "schedule_day") do %>
+    <div class="completed_background">
+      <p><em><%= day.date.strftime('%m/%d') %></em></p>
+      <p class="activity"><b><%= day.activity %></b></p>
+    </div>
     <% end %>
   <% end %>
-</td>
+  </td>
+<% else%>
+  <td class="table_cell">
+  <%= link_to mark_completed_path(day), remote: true do %>
+    <%= div_for day do %>
+    <div class="normal_background">
+      <p><em><%= day.date.strftime('%m/%d') %></em></p>
+      <p class="activity"><b><%= day.activity %></b></p>
+    <div class="normal_background">
+    <% end %>
+  <% end %>
+  </td>
+<% end %>
