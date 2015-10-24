@@ -1,29 +1,31 @@
-<h1><%= @schedule.name %></h1>
+<div class="well main_well">
+  <h1><%= @schedule.name %></h1>
 
-<div class="alert alert-info">Here is your customized schedule, click on an activity to mark it as completed and keep track
-of your progress!</div>
+  <div class="alert alert-info">Click on an activity to mark it as completed and keep track
+  of your progress!</div>
 
-<table class="table-bordered table-striped schedule-table">
-  <tr>
-    <td><b>Week</b></td>
-    <td><b>Monday</b></td>
-    <td><b>Tuesday</b></td>
-    <td><b>Wednesday</b></td>
-    <td><b>Thursday</b></td>
-    <td><b>Friday</b></td>
-    <td><b>Saturday</b></td>
-    <td><b>Sunday</b></td>
-  </tr>
-  <% @schedule.weeks.order(:number).each do |week| %>
-    <% if week.days.any? %>
-      <tr>
-        <td><b><p class="week_number"><%= week.number %><p></b></td>
-        <% week.days.order(:date).each do |day| %>
-            <%= render day, locals: { day: @day }%>
-        <% end %>
-      </tr>
+  <table class="table-bordered table-striped schedule-table">
+    <tr>
+      <td><b>Week</b></td>
+      <td><b>Monday</b></td>
+      <td><b>Tuesday</b></td>
+      <td><b>Wednesday</b></td>
+      <td><b>Thursday</b></td>
+      <td><b>Friday</b></td>
+      <td><b>Saturday</b></td>
+      <td><b>Sunday</b></td>
+    </tr>
+    <% @schedule.weeks.order(:number).each do |week| %>
+      <% if week.days.any? %>
+        <tr>
+          <td><b><p class="week_number"><%= week.number %><p></b></td>
+          <% week.days.order(:date).each do |day| %>
+              <%= render day, locals: { day: @day }%>
+          <% end %>
+        </tr>
+      <% end %>
     <% end %>
-  <% end %>
-</table>
-    
-<%= link_to 'Edit', edit_schedule_path(@schedule) %> 
+  </table>
+      
+  <%= link_to 'Edit', edit_schedule_path(@schedule) %> 
+</div>

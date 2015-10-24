@@ -1,54 +1,11 @@
-<h1>New Schedule</h1>
-
 <div class="row">
-  <div class ="col-md-6">
-    <%= render 'form' %>
-  </div>
-  <div class="col-md-6">
-    <h3>Suggested weekly training amounts</td>
-    <table class="table table-striped">
-      <tr>
-        <td></td>
-        <td>Full Marathon</td>
-        <td>Half Marathon</td>
-        <td>10K Race</td>
-        <td>5k Race</td>
-      </tr>
-      <tr>
-        <td>short run</td>
-        <td>2 days</td>
-        <td>2 days</td>
-        <td>1 day</td>
-        <td>1 day</td>
-      </tr>
-      <tr>
-        <td>medium run</td>
-        <td>1 day</td>
-        <td>1 day</td>
-        <td>1 day</td>
-        <td>1 day</td>
-      </tr>
-      <tr>
-        <td>long run</td>
-        <td>1 day</td>
-        <td>1 day</td>
-        <td>1 day</td>
-        <td>1 day</td>
-      </tr>
-      <tr>
-        <td>rest</td>
-        <td>2 days</td>
-        <td>2 days</td>
-        <td>3 days</td>
-        <td>3 days</td>
-      </tr>
-      <tr>
-        <td>cross train</td>
-        <td>1 day</td>
-        <td>1 day</td>
-        <td>1 day</td>
-        <td>1 day</td>
-      </tr>
-    </table>
+  <div class="form_container">
+    <h1>New Schedule</h1>
+    <div class="well create_well main_well col-md-6">
+      <%= render 'training_table' %>
+    </div>
+    <div class="well create_well main_well col-md-6">
+      <%= render 'form' %>
+    </div>
   </div>
 </div>

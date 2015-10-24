@@ -1,30 +1,32 @@
-<h1><%= @user.username %>'s Schedules</h1>
+<div class="well main_well">
+  <h1><%= @user.username %>'s Schedules</h1>
 
-<table class = "table table-striped">
-  <thead>
-    <tr>
-      <th>Schedule Name</th>
-      <th>Race Date</th>
-      <th>Race Type</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @schedules.each do |schedule| %>
+  <table class = "table table-striped">
+    <thead>
       <tr>
-        <td><b><%= link_to schedule.name, schedule %></b></td>
-        <td><%= schedule.race_day.strftime('%m/%d/%y') %></td>
-        <td><%= schedule.race_type %></td>
-        <td>
-          <div class="delete_schedule btn btn-danger">
-            <%= link_to 'Delete', schedule, method: :delete, data: { confirm: 'Are you sure?' } %>
-          </div>
-        </td>
+        <th>Schedule Name</th>
+        <th>Race Date</th>
+        <th>Race Type</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
-<br>
+    <tbody>
+      <% @schedules.each do |schedule| %>
+        <tr>
+          <td><b><%= link_to schedule.name, schedule %></b></td>
+          <td><%= schedule.race_day.strftime('%m/%d/%y') %></td>
+          <td><%= schedule.race_type %></td>
+          <td>
+            <div class="delete_schedule btn btn-danger">
+              <%= link_to 'Delete', schedule, method: :delete, data: { confirm: 'Are you sure?' } %>
+            </div>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 
-<%= link_to 'New Schedule', new_schedule_path %>
+  <br>
+
+  <%= link_to 'New Schedule', new_schedule_path, :class => "btn btn-primary" %>
+</div>

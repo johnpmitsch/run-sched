@@ -2,6 +2,9 @@ class Schedule < ActiveRecord::Base
   belongs_to :user
   has_many :weeks, dependent: :destroy
 
+  validates :name, presence: true
+  validates :race_day, presence: true
+
   attr_accessor :login
   
   def self.full_marathon
@@ -66,7 +69,7 @@ class Schedule < ActiveRecord::Base
   def update_days
     training_day = self.start_date(self.training_info[:weeks])
 
-    self.weeks.each_with_index do |week, index|
+    self.weeks.sort.each_with_index do |week, index|
       (1..7).each do |_x|
 
         if training_day == self.race_day

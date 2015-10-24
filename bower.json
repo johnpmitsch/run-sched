@@ -1,0 +1,27 @@
+{
+  "name": "sched.run",
+  "version": "0.0.2",
+  "homepage": "https://github.com/johnpmitsch/run-sched",
+  "authors": [
+    "johnpmitsch <johnpmitsch@gmail.com>"
+  ],
+  "description": "App to create running training schedules",
+  "moduleType": [
+    "globals"
+  ],
+  "keywords": [
+    "running",
+    "training"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": { 
+    "pikaday": "~1.3"
+  }
+}
