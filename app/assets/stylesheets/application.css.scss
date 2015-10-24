@@ -12,8 +12,33 @@
  *
  *= require_tree .
  *= require_self
+ *= require pikaday/css/pikaday
  */
 .logo {
   height: 40px;
   margin: 5px auto;
+}
+
+html {
+   margin:0;
+   padding:0;
+   height:100%;
+}
+
+.main_well {
+  background-color: white;
+  margin-top: 5px;
+  overflow: scroll;
+}
+
+body { 
+  background: url(outdoor_runner.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+main {
+  background-color: transparent;
 }

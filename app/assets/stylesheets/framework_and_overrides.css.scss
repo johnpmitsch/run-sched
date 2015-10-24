@@ -83,18 +83,27 @@ section {
   @extend .btn-xs;
 }
 .navbar-inverse .navbar-nav > li > a {
-  color: #00b6ff;
+  color: white;
 }
+
+.navbar-inverse .navbar-nav > li > a:hover {
+  color: #00B5FE;
+}
+
 .navbar-inverse {
-  background-color: #f5f5f5;
-  border-color: #f5f5f5;
+  border: none;
 }
 
-.navbar-inverse .navbar-toggle {
-  border-color: #00b6ff;
+.navbar-collapse {
+  border: none;
 }
 
-.navbar-inverse .navbar-toggle .icon-bar {
+.navbar-inverse > .navbar-toggle {
+  background-color: black;
+  border:1px white;
+}
+
+.icon-bar {
   background-color: #00b6ff;
 }
 

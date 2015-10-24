@@ -1,6 +1,6 @@
 <%= form_for(@schedule) do |f| %>
 <div class="row">
-  <div class="col-md-6">
+  <div class="col-xs-6">
     <% if @schedule.errors.any? %>
       <div id="error_explanation">
         <h2><%= pluralize(@schedule.errors.count, "error") %> prohibited this schedule from being saved:</h2>
@@ -13,20 +13,22 @@
       </div>
     <% end %>
   
+    <h3>Race info</h3>
     <div class="field">
-      <%= f.label :name, "Schedule Name" %><br>
-      <%= f.text_field :name %>
+      <%= f.label :name, "Schedule Name"%><br>
+      <%= f.text_field :name, :required => true  %>
     </div>
     <div class="field">
       <%= f.label :race_day %><br>
-      <%= f.date_select :race_day %>
+      <%= f.text_field :race_day, :id => "datepicker", :required => true  %>
     </div>
     <div class="field">
       <%= f.label :race_type %><br>
       <%= f.select :race_type, @race_types %>
     </div>
   </div>
-  <div class="col-md-6">
+  <div class="col-xs-6">
+    <h3>Weekly Activities</h3>
     <br>
     <div class="field">
       <%= f.label :monday %><br>

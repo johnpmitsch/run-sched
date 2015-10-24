@@ -14,4 +14,8 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap-sprockets
+//= require pikaday
 //= require_tree .
+$(document).ready(function() {
+var picker = new Pikaday({ field: document.getElementById('datepicker') });
+});
