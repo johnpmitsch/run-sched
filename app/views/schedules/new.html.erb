@@ -1,11 +1,12 @@
 <div class="row">
   <div class="form_container">
     <h1>New Schedule</h1>
-    <div class="well create_well main_well col-md-6">
-      <%= render 'training_table' %>
-    </div>
+    <div class="alert alert-info alert-dismissable">Fill out your race information and pick an training activity for each day of the week, then click "Create Schedule" to create your customized training plan!</div>
     <div class="well create_well main_well col-md-6">
       <%= render 'form' %>
+    </div>
+    <div id="training_table" class="well create_well main_well col-md-6">
+      <%= render 'training_table' %>
     </div>
   </div>
 </div>
