@@ -12,10 +12,28 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= jquery.turbolinks
 //= require turbolinks
 //= require bootstrap-sprockets
 //= require pikaday
 //= require_tree .
 $(document).ready(function() {
 var picker = new Pikaday({ field: document.getElementById('datepicker') });
+
+
+function hasHtml5Validation () {
+  return false;
+}
+
+//check for html5 form validation, if it is not there, use css fallback
+if (hasHtml5Validation()) {
+  $('.new_schedule').submit(function (e) {
+    if (!this.checkValidity()) {
+      e.preventDefault();
+      $(this).addClass('invalid');
+    } else {
+      $(this).removeClass('invalid');
+    }
+  });
+}
 });

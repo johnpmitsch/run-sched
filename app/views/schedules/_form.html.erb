@@ -1,10 +1,9 @@
 <%= form_for(@schedule) do |f| %>
 <div class="row">
-  <div class="col-xs-6">
+  <div class="col-sm-6">
     <% if @schedule.errors.any? %>
       <div id="error_explanation">
         <h2><%= pluralize(@schedule.errors.count, "error") %> prohibited this schedule from being saved:</h2>
-
         <ul>
         <% @schedule.errors.full_messages.each do |message| %>
           <li><%= message %></li>
@@ -16,20 +15,19 @@
     <h3>Race info</h3>
     <div class="field">
       <%= f.label :name, "Schedule Name"%><br>
-      <%= f.text_field :name, :required => true  %>
+      <%= f.text_field :name, :required => true, :placeholder => "required"  %>
     </div>
     <div class="field">
       <%= f.label :race_day %><br>
-      <%= f.text_field :race_day, :id => "datepicker", :required => true  %>
+      <%= f.text_field :race_day, :id => "datepicker", :required => true, :placeholder => "required"  %>
     </div>
     <div class="field">
       <%= f.label :race_type %><br>
       <%= f.select :race_type, @race_types %>
     </div>
   </div>
-  <div class="col-xs-6">
+  <div class="col-sm-6">
     <h3>Weekly Activities</h3>
-    <br>
     <div class="field">
       <%= f.label :monday %><br>
       <%= f.select :monday, @training_options, :selected => "rest"  %>
@@ -58,6 +56,7 @@
       <%= f.label :sunday %><br>
       <%= f.select :sunday, @training_options, :selected => "long run" %>
     </div>
+    <div class="alert alert-info alert-dismissable">You can use the <a href=#training_table><b>table below</b></a> to figure out how many days of each activity you need to train for your race</div>
   </div>
     <div>
       <%= f.submit 'Create Schedule', :class => "btn btn-primary btn-lg"%>
