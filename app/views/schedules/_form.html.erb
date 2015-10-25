@@ -15,46 +15,46 @@
     <h3>Race info</h3>
     <div class="field">
       <%= f.label :name, "Schedule Name"%><br>
-      <%= f.text_field :name, :required => true, :placeholder => "required"  %>
+      <%= f.text_field :name, :placeholder => "required"  %>
     </div>
     <div class="field">
       <%= f.label :race_day %><br>
-      <%= f.text_field :race_day, :id => "datepicker", :required => true, :placeholder => "required"  %>
+      <%= f.text_field :race_day, :id => "datepicker", :placeholder => "required"  %>
     </div>
     <div class="field">
       <%= f.label :race_type %><br>
-      <%= f.select :race_type, @race_types %>
+      <%= f.select :race_type, RACE_TYPES %>
     </div>
   </div>
   <div class="col-sm-6">
     <h3>Weekly Activities</h3>
     <div class="field">
       <%= f.label :monday %><br>
-      <%= f.select :monday, @training_options, :selected => "rest"  %>
+      <%= f.select :monday, TRAINING_OPTIONS, :selected => "rest"  %>
     </div>
     <div class="field">
       <%= f.label :tuesday %><br>
-      <%= f.select :tuesday, @training_options, :selected => "short run" %>
+      <%= f.select :tuesday, TRAINING_OPTIONS, :selected => "short run" %>
     </div>
     <div class="field">
       <%= f.label :wednesday %><br>
-      <%= f.select :wednesday, @training_options, :selected => "medium run" %>
+      <%= f.select :wednesday, TRAINING_OPTIONS, :selected => "medium run" %>
     </div>
     <div class="field">
       <%= f.label :thursday %><br>
-      <%= f.select :thursday, @training_options, :selected => "cross train" %>
+      <%= f.select :thursday, TRAINING_OPTIONS, :selected => "cross train" %>
     </div>
     <div class="field">
       <%= f.label :friday %><br>
-      <%= f.select :friday, @training_options, :selected => "short run"  %>
+      <%= f.select :friday, TRAINING_OPTIONS, :selected => "short run"  %>
     </div>
     <div class="field">
       <%= f.label :saturday %><br>
-      <%= f.select :saturday, @training_options, :selected =>  "rest" %>
+      <%= f.select :saturday, TRAINING_OPTIONS, :selected =>  "rest" %>
     </div>
     <div class="field">
       <%= f.label :sunday %><br>
-      <%= f.select :sunday, @training_options, :selected => "long run" %>
+      <%= f.select :sunday, TRAINING_OPTIONS, :selected => "long run" %>
     </div>
     <div class="alert alert-info alert-dismissable">You can use the <a href=#training_table><b>table below</b></a> to figure out how many days of each activity you need to train for your race</div>
   </div>

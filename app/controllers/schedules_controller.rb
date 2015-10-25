@@ -15,8 +15,6 @@ class SchedulesController < ApplicationController
 
   # GET /schedules/new
   def new
-    @training_options = TRAINING_OPTIONS
-    @race_types = RACE_TYPES
     @schedule = current_user.schedules.new
   end
 
