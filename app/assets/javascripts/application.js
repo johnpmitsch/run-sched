@@ -12,8 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= jquery.turbolinks
-//= require turbolinks
 //= require bootstrap-sprockets
 //= require pikaday
 //= require_tree .

@@ -1,17 +1,18 @@
 <%= form_for(@schedule) do |f| %>
 <div class="row">
+  <% if @schedule.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@schedule.errors.count, "error") %> prohibited this schedule from being saved:</h2>
+      <ul>
+      <% @schedule.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+</div>
+<div class="row">
   <div class="col-sm-6">
-    <% if @schedule.errors.any? %>
-      <div id="error_explanation">
-        <h2><%= pluralize(@schedule.errors.count, "error") %> prohibited this schedule from being saved:</h2>
-        <ul>
-        <% @schedule.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-        </ul>
-      </div>
-    <% end %>
-  
     <h3>Race info</h3>
     <div class="field">
       <%= f.label :name, "Schedule Name"%><br>
