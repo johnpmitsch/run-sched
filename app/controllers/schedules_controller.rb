@@ -1,16 +1,22 @@
 class SchedulesController < ApplicationController
   before_action :set_schedule, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:new, :index, :edit, :show]
 
   # GET /schedules
   # GET /schedules.json
   def index
-    @user = current_user
     @schedules = current_user.schedules 
   end
 
   # GET /schedules/1
   # GET /schedules/1.json
   def show
+    @schedule = Schedule.find(params[:id])
+    if @schedule.user == current_user
+      @schedule
+    else
+      render(:file => File.join(Rails.root, 'public/403.html'), :status => 403, :layout => false)
+    end
   end
 
   # GET /schedules/new
