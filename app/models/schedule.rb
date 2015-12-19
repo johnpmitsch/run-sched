@@ -7,6 +7,18 @@ class Schedule < ActiveRecord::Base
 
   attr_accessor :login
   
+  def self.full_marathon_advanced
+    training_weeks = 18
+    {
+      :short_run => [3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 5, 5, 4, 3, 3],
+      :medium_run => [5, 5, 6, 6, 7, 7, 8, 8, 9, 9, 10, 6, 10, 6, 10, 8, 6, 4, 3],
+      :long_run => [10, 11, 8, 13, 14, 10, 16, 17, 13.1, 19, 20, 12, 20, 12, 20, 12, 8, 8],
+      :rest => duplicate_string_array('rest', training_weeks + 1),
+      :cross_train => duplicate_string_array('cross train', training_weeks + 1),
+      :weeks => training_weeks
+    }
+  end
+
   def self.full_marathon
     training_weeks = 18
     {
@@ -96,7 +108,7 @@ class Schedule < ActiveRecord::Base
   end
   
   def training_info
-    Schedule.send(self.race_type.sub(" ","_"))
+    Schedule.send(self.race_type.tr(" ","_"))
   end
 
   def start_date(weeks)
